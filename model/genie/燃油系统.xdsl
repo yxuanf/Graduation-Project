@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="Network3" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Begrime" diagtype="target">
+			<state id="发生" fault="true" />
+			<state id="未发生" />
+			<probabilities>0.0001 0.9999</probabilities>
+		</cpt>
+		<cpt id="Damaged_sealing_ring" diagtype="target">
+			<state id="发生" fault="true" />
+			<state id="未发生" />
+			<probabilities>0.0001 0.9999</probabilities>
+		</cpt>
+		<cpt id="Insufficient_traffic" diagtype="target">
+			<state id="发生" fault="true" />
+			<state id="未发生" />
+			<probabilities>0.0001 0.9999</probabilities>
+		</cpt>
+		<cpt id="Throttle_component" diagtype="target">
+			<state id="故障" fault="true" />
+			<state id="正常" />
+			<parents>Begrime Damaged_sealing_ring Insufficient_traffic</parents>
+			<probabilities>1 0 1 0 1 0 0.9 0.09999999999999999 0.9 0.09999999999999998 0.8 0.2 0.8 0.2 0.09999999999999998 0.9</probabilities>
+		</cpt>
+		<cpt id="Pressure_rise_limiter" diagtype="target">
+			<state id="故障" fault="true" />
+			<state id="正常" />
+			<parents>Throttle_component</parents>
+			<probabilities>0.9999 9.999999999998899e-05 0.0001 0.9999</probabilities>
+		</cpt>
+		<cpt id="Valve_components" diagtype="target">
+			<state id="卡死" fault="true" />
+			<state id="正常" />
+			<probabilities>0.0001 0.9999</probabilities>
+		</cpt>
+		<cpt id="Fuel_regulator" diagtype="target">
+			<state id="故障" fault="true" />
+			<state id="正常" />
+			<parents>Pressure_rise_limiter Valve_components</parents>
+			<probabilities>0.9999 9.999999999998899e-05 0.9999 9.999999999998899e-05 0.999900001 0.0001 9.999999999954491e-06 0.99999</probabilities>
+		</cpt>
+		<cpt id="Start_fuel_valve" diagtype="target">
+			<state id="不密封" fault="true" />
+			<state id="正常" />
+			<probabilities>0.0001 0.9999</probabilities>
+		</cpt>
+		<cpt id="Check_valve" diagtype="target">
+			<state id="不密封" fault="true" />
+			<state id="正常" />
+			<probabilities>0.0001 0.9999</probabilities>
+		</cpt>
+		<cpt id="Start_fueling" diagtype="target">
+			<state id="故障" fault="true" />
+			<state id="正常" />
+			<parents>Start_fuel_valve Check_valve</parents>
+			<probabilities>1 0 0.9999 9.999999999998899e-05 0.9999 9.999999999998899e-05 9.999999999998899e-05 0.9999</probabilities>
+		</cpt>
+		<cpt id="Thermostat_failure" diagtype="target">
+			<state id="发生" fault="true" />
+			<state id="未发生" />
+			<probabilities>0.0001 0.9999</probabilities>
+		</cpt>
+		<cpt id="Thermostat_circuit_disconnected" diagtype="target">
+			<state id="发生" fault="true" />
+			<state id="未发生" />
+			<probabilities>0.0001 0.9999</probabilities>
+		</cpt>
+		<cpt id="On_signal_off" diagtype="target">
+			<state id="发生" fault="true" />
+			<state id="未发生" />
+			<probabilities>0.0001 0.9999</probabilities>
+		</cpt>
+		<cpt id="Temperature_regulator" diagtype="target">
+			<state id="故障" fault="true" />
+			<state id="正常" />
+			<parents>Thermostat_failure Thermostat_circuit_disconnected On_signal_off</parents>
+			<probabilities>1 0 0.99 0.01000000000000001 0.99 0.01000000000000001 0.9 0.09999999999999998 0.99 0.01000000000000001 0.9 0.09999999999999998 0.85 0.15 0.01000000000000001 0.99</probabilities>
+		</cpt>
+		<cpt id="Parking_switch" diagtype="target">
+			<state id="未打开" fault="true" />
+			<state id="正常" />
+			<probabilities>0.0001 0.9999</probabilities>
+		</cpt>
+		<cpt id="Automatic_fuel_dispenser" diagtype="target">
+			<state id="故障" fault="true" />
+			<state id="劣化" />
+			<state id="正常" />
+			<parents>Temperature_regulator Parking_switch</parents>
+			<probabilities>0.9999999999999999 0 0 0.99 0.009900000000000001 0.0001000000000000081 0.99 0.009900000000000001 0.0001000000000000081 0.0001 0.00990000000000002 0.99</probabilities>
+		</cpt>
+		<cpt id="Throttle" diagtype="target">
+			<state id="积垢" fault="true" />
+			<state id="正常" />
+			<probabilities>0.0001 0.9999</probabilities>
+		</cpt>
+		<cpt id="Short_circuit_or_open_circuit" diagtype="target">
+			<state id="发生" fault="true" />
+			<state id="未发生" />
+			<probabilities>0.0001 0.9999</probabilities>
+		</cpt>
+		<cpt id="Faulty_fuel_drain_valve" diagtype="target">
+			<state id="故障" fault="true" />
+			<state id="劣化" />
+			<state id="正常" />
+			<parents>Throttle Short_circuit_or_open_circuit</parents>
+			<probabilities>1 0 0 0.9 0.099 0.0009999999999999731 0.9 0.099 0.0009999999999999731 9.999999999998899e-05 0.009900000000000001 0.99</probabilities>
+		</cpt>
+		<cpt id="Fine_Oil_Filter_1" diagtype="target">
+			<state id="脏污" fault="true" />
+			<state id="正常" />
+			<probabilities>0.0001 0.9999</probabilities>
+		</cpt>
+		<cpt id="Shaft_seal_damaged_1" diagtype="target">
+			<state id="发生" fault="true" />
+			<state id="未发生" />
+			<probabilities>0.0001 0.9999</probabilities>
+		</cpt>
+		<cpt id="Gear_pump_wear_1" diagtype="target">
+			<state id="发生" fault="true" />
+			<state id="劣化" />
+			<state id="未发生" />
+			<probabilities>0.0001 0.009900000000000001 0.99</probabilities>
+		</cpt>
+		<cpt id="Gear_pump_1" diagtype="target">
+			<state id="故障" fault="true" />
+			<state id="劣化" />
+			<state id="正常" />
+			<parents>Fine_Oil_Filter_1 Shaft_seal_damaged_1 Gear_pump_wear_1</parents>
+			<probabilities>1 0 0 1 0 0 1 0 0 1 0 0 0.6 0.35 0.05000000000000004 0.2 0.4 0.4 1 0 0 0.6 0.35 0.05000000000000004 0.2 0.4 0.4 0.2 0.4 0.4 0.1 0.25 0.65 0.01 0.08999999999999997 0.9</probabilities>
+		</cpt>
+		<cpt id="Fine_Oil_Filter_2" diagtype="target">
+			<state id="脏污" fault="true" />
+			<state id="正常" />
+			<probabilities>0.0001 0.9999</probabilities>
+		</cpt>
+		<cpt id="Shaft_seal_damaged_2" diagtype="target">
+			<state id="发生" fault="true" />
+			<state id="未发生" />
+			<probabilities>0.0001 0.9999</probabilities>
+		</cpt>
+		<cpt id="Gear_pump_wear_2" diagtype="target">
+			<state id="发生" fault="true" />
+			<state id="劣化" />
+			<state id="未发生" />
+			<probabilities>0.0001 0.009900000000000001 0.99</probabilities>
+		</cpt>
+		<cpt id="Gear_pump_2" diagtype="target">
+			<state id="故障" fault="true" />
+			<state id="劣化" />
+			<state id="正常" />
+			<parents>Fine_Oil_Filter_2 Shaft_seal_damaged_2 Gear_pump_wear_2</parents>
+			<probabilities>1 0 0 1 0 0 1 0 0 1 0 0 0.6 0.35 0.05000000000000004 0.2 0.4 0.4 1 0 0 0.6 0.35 0.05000000000000004 0.2 0.4 0.4 0.2 0.4 0.4 0.1 0.25 0.65 0.01 0.08999999999999997 0.9</probabilities>
+		</cpt>
+		<cpt id="Gear_pump" diagtype="target">
+			<state id="故障" fault="true" />
+			<state id="劣化" />
+			<state id="正常" />
+			<parents>Gear_pump_1 Gear_pump_2</parents>
+			<probabilities>1 0 0 0.9999999999400006 0 0 0.9999999999400006 0 0 0.9999999999400006 0 0 0.4 0.5 0.09999999999999998 0.2 0.6 0.2000000000000001 0.9999999999400006 0 0 0.2 0.6 0.2000000000000001 0.01 0.08999999999999997 0.9</probabilities>
+		</cpt>
+		<cpt id="Fuel_System" diagtype="target">
+			<state id="故障" fault="true" />
+			<state id="劣化" fault="true" />
+			<state id="报警" />
+			<state id="正常" />
+			<parents>Fuel_regulator Start_fueling Automatic_fuel_dispenser Faulty_fuel_drain_valve Gear_pump</parents>
+			<probabilities>1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 0.1 0.8 0.099 0.0009999999999999731 0.05 0.7 0.2 0.04999999999999999 1 0 0 0 0.05 0.7 0.2 0.04999999999999999 0.04000000000000004 0.95 0.01000000000000001 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 0.05 0.7 0.2 0.04999999999999999 0.04000000000000004 0.95 0.01000000000000001 0 1 0 0 0 0 0 0.1 0.9 0 0 0.02000000000000002 0.98</probabilities>
+		</cpt>
+		<cpt id="Autostarter" diagtype="target">
+			<state id="膜片损坏" fault="true" />
+			<state id="正常" />
+			<probabilities>0.0001 0.9999</probabilities>
+		</cpt>
+		<cpt id="Distribution_valve" diagtype="target">
+			<state id="卡滞在关闭位置" fault="true" />
+			<state id="正常" />
+			<probabilities>0.0001 0.9999</probabilities>
+		</cpt>
+		<cpt id="Breakdown_shutdown_1" diagtype="observation" ranked="true">
+			<state id="发生" />
+			<state id="未发生" />
+			<parents>Gear_pump_wear_1</parents>
+			<probabilities>0.999999990001 9.999000000000001e-09 0.999910009 8.999100000000001e-05 0.99990001 9.999000000000001e-05</probabilities>
+		</cpt>
+		<cpt id="Oil_leak_1" diagtype="observation" ranked="true">
+			<state id="发生" />
+			<state id="未发生" />
+			<parents>Shaft_seal_damaged_1</parents>
+			<probabilities>0.999 0.001 0.0001 0.9999</probabilities>
+		</cpt>
+		<cpt id="Abnormal_speed" diagtype="observation" ranked="true">
+			<state id="发生" />
+			<state id="未发生" />
+			<parents>Begrime</parents>
+			<probabilities>0.99 0.01 0.001 0.999</probabilities>
+		</cpt>
+		<cpt id="Thermostat_working" diagtype="observation" ranked="true">
+			<state id="发生" />
+			<state id="未发生" />
+			<parents>Damaged_sealing_ring Insufficient_traffic</parents>
+			<probabilities>0.99990001 9.999000000000001e-05 0.9990000999999999 0.0009999000000000002 0.9990000999999999 0.0009999000000000002 0.990001 0.009999000000000001</probabilities>
+		</cpt>
+		<cpt id="Breakdown_shutdown_2" diagtype="observation" ranked="true">
+			<state id="发生" />
+			<state id="未发生" />
+			<parents>Gear_pump_wear_2</parents>
+			<probabilities>0.999999990001 9.999000000000001e-09 0.999910009 8.999100000000001e-05 0.99990001 9.999000000000001e-05</probabilities>
+		</cpt>
+		<cpt id="Unable_to_adjust_fuel" diagtype="observation" ranked="true">
+			<state id="发生" />
+			<state id="未发生" />
+			<parents>Valve_components</parents>
+			<probabilities>0.9999 0.0001 0.0001 0.9999</probabilities>
+		</cpt>
+		<cpt id="Injector_pressure_fluctuation" diagtype="observation" ranked="true">
+			<state id="发生" />
+			<state id="未发生" />
+			<parents>Start_fuel_valve Check_valve</parents>
+			<probabilities>0.997500025 0.002499975 0.9500005 0.0499995 0.9500005 0.0499995 9.99999999995449e-06 0.99999</probabilities>
+		</cpt>
+		<cpt id="Low_protection_value" diagtype="observation" ranked="true">
+			<state id="发生" />
+			<state id="未发生" />
+			<parents>Thermostat_failure Thermostat_circuit_disconnected</parents>
+			<probabilities>0.9999 9.9999999999989e-05 0.99 0.01000000000000001 0.99 0.01000000000000001 9.999999999998899e-05 0.9999</probabilities>
+		</cpt>
+		<cpt id="No_working_signal" diagtype="observation" ranked="true">
+			<state id="发生" />
+			<state id="未发生" />
+			<parents>Short_circuit_or_open_circuit</parents>
+			<probabilities>0.9999999900001 9.999900000000001e-09 0.999900001 9.9999e-05</probabilities>
+		</cpt>
+		<cpt id="No_power_on_signal" diagtype="observation" ranked="true">
+			<state id="发生" />
+			<state id="未发生" />
+			<parents>On_signal_off</parents>
+			<probabilities>0.9900099999999999 0.009990000000000001 0.001000000000000001 0.999</probabilities>
+		</cpt>
+		<cpt id="Low_fuel_injector_pressure" diagtype="observation" ranked="true">
+			<state id="发生" />
+			<state id="未发生" />
+			<parents>Distribution_valve Parking_switch Autostarter</parents>
+			<probabilities>1 0 0.9999 9.999999999998899e-05 0.9999 9.999999999998899e-05 0.9 0.09999999999999998 0.9999 9.999999999998899e-05 0.9 0.09999999999999998 0.9 0.09999999999999998 0.01000000000000001 0.99</probabilities>
+		</cpt>
+		<cpt id="Thermostat_check_abnormality" diagtype="observation" ranked="true">
+			<state id="发生" />
+			<state id="未发生" />
+			<parents>Throttle</parents>
+			<probabilities>0.800002 0.199998 9.99999999995449e-06 0.99999</probabilities>
+		</cpt>
+		<cpt id="Oil_leak_2" diagtype="observation" ranked="true">
+			<state id="发生" />
+			<state id="未发生" />
+			<parents>Shaft_seal_damaged_2</parents>
+			<probabilities>0.999 0.001 0.0001 0.9999</probabilities>
+		</cpt>
+		<cpt id="Iron_filings_1" diagtype="observation" ranked="true">
+			<state id="发生" />
+			<state id="未发生" />
+			<parents>Gear_pump_wear_1</parents>
+			<probabilities>0.99 0.01 0.6 0.4 0.05 0.95</probabilities>
+		</cpt>
+		<cpt id="Pressure_difference_1" diagtype="observation" ranked="true">
+			<state id="偏高" />
+			<state id="正常" />
+			<parents>Fine_Oil_Filter_1</parents>
+			<probabilities>0.9999 9.999999999998899e-05 0.0001 0.9999</probabilities>
+		</cpt>
+		<cpt id="Pressure_fluctuations_2" diagtype="observation" ranked="true">
+			<state id="发生" />
+			<state id="未发生" />
+			<parents>Shaft_seal_damaged_2</parents>
+			<probabilities>0.98 0.02000000000000002 0.06000000000000005 0.9399999999999999</probabilities>
+		</cpt>
+		<cpt id="Iron_filings_2" diagtype="observation" ranked="true">
+			<state id="发生" />
+			<state id="未发生" />
+			<parents>Gear_pump_wear_2</parents>
+			<probabilities>0.99 0.01 0.6 0.4 0.05 0.95</probabilities>
+		</cpt>
+		<cpt id="Pressure_difference_2" diagtype="observation" ranked="true">
+			<state id="偏高" />
+			<state id="正常" />
+			<parents>Fine_Oil_Filter_2</parents>
+			<probabilities>0.9999 9.999999999998899e-05 0.0001 0.9999</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 4.1.3402.0 ACADEMIC" name="燃油系统">
+			<node id="Fuel_System">
+				<name>燃油系统</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>2960 237 3133 310</position>
+				<barchart active="true" width="270" height="110" />
+			</node>
+			<node id="Temperature_regulator">
+				<name>温度调节器</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>3682 1458 3855 1531</position>
+				<barchart active="true" width="187" height="77" />
+			</node>
+			<node id="Faulty_fuel_drain_valve">
+				<name>故障燃油排放阀</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>4717 1058 4890 1131</position>
+				<barchart active="true" width="169" height="88" />
+			</node>
+			<node id="Start_fuel_valve">
+				<name>4.1启动燃油阀</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>2759 1774 2932 1847</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Check_valve">
+				<name>4.1止回阀</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>3187 1769 3360 1842</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Fuel_regulator">
+				<name>燃油调节器</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>2470 1095 2643 1168</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Pressure_rise_limiter">
+				<name>3.1压力升高限制器</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>2383 1601 2556 1674</position>
+				<barchart active="true" width="169" height="80" />
+			</node>
+			<node id="Autostarter">
+				<name>6.1自动启动器</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>4425 1895 4598 1968</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Gear_pump_1">
+				<name>1.1齿轮泵</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1542 624 1715 697</position>
+				<barchart active="true" width="169" height="88" />
+			</node>
+			<node id="Throttle">
+				<name>7.1节流器</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>4890 1781 5063 1854</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Throttle_component">
+				<name>节流组件</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>2406 1885 2579 1958</position>
+				<barchart active="true" width="169" height="80" />
+			</node>
+			<node id="Fine_Oil_Filter_1">
+				<name>1.1细油滤</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1548 1547 1721 1620</position>
+				<barchart active="true" width="169" height="66" />
+			</node>
+			<node id="Automatic_fuel_dispenser">
+				<name>自动燃油分配器</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>3790 1067 3963 1140</position>
+				<barchart active="true" width="169" height="88" />
+			</node>
+			<node id="Valve_components">
+				<name>3.1活门组件</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>2681 1466 2854 1539</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Parking_switch">
+				<name>6.1停车开关组件</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>4268 1425 4441 1498</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Distribution_valve">
+				<name>6.1分配活门</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>4160 1890 4333 1963</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Start_fueling">
+				<name>启动供油组件</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>2998 1274 3171 1347</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Breakdown_shutdown_1">
+				<name>1.1故障停车</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>846 1179 1019 1252</position>
+				<barchart active="true" width="169" height="66" />
+			</node>
+			<node id="Oil_leak_1">
+				<name>1.1齿轮泵漏油</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>951 565 1124 638</position>
+				<barchart active="true" width="169" height="66" />
+			</node>
+			<node id="Abnormal_speed">
+				<name>2.1转速异常</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>2810 2005 2983 2078</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Thermostat_working">
+				<name>2.1恢复原工况时温度调节器工作</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>2164 2000 2337 2073</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Unable_to_adjust_fuel">
+				<name>3.1无法进行燃油调节</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>2832 1074 3005 1147</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Injector_pressure_fluctuation">
+				<name>4.1喷油嘴前燃油压力波动</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>2977 1633 3150 1706</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Low_protection_value">
+				<name>5.1温度保护值偏低</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>3423 1478 3596 1551</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="No_working_signal">
+				<name>7.1温度调节器无工作信号</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>4458 1269 4631 1342</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="No_power_on_signal">
+				<name>5.1没有温度调节器电源接通信号</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>3918 1477 4091 1550</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Low_fuel_injector_pressure">
+				<name>6.1喷油嘴前燃油压力低</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>4250 1688 4423 1761</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Thermostat_check_abnormality">
+				<name>7.1温度调节器检查异常</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>4969 1255 5142 1328</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Gear_pump_wear_1">
+				<name>1.1齿轮泵严重磨损</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1208 1418 1381 1491</position>
+				<barchart active="true" width="169" height="88" />
+			</node>
+			<node id="Shaft_seal_damaged_1">
+				<name>1.1齿轮泵轴封损坏</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1082 756 1255 829</position>
+				<barchart active="true" width="169" height="66" />
+			</node>
+			<node id="Begrime">
+				<name>2.1节流组件积垢</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>2737 2445 2910 2518</position>
+				<barchart active="true" width="169" height="100" />
+			</node>
+			<node id="Damaged_sealing_ring">
+				<name>2.1节流组件密封环损坏</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>2194 2446 2367 2519</position>
+				<barchart active="true" width="169" height="100" />
+			</node>
+			<node id="Insufficient_traffic">
+				<name>2.1节流组件通流量不足</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>2503 2453 2676 2526</position>
+				<barchart active="true" width="169" height="100" />
+			</node>
+			<node id="Thermostat_failure">
+				<name>5.1温度调节器失效</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>3675 1882 3848 1955</position>
+				<barchart active="true" width="196" height="89" />
+			</node>
+			<node id="Thermostat_circuit_disconnected">
+				<name>5.1温度调节器回路断开</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>3436 1887 3609 1960</position>
+				<barchart active="true" width="187" height="100" />
+			</node>
+			<node id="On_signal_off">
+				<name>5.1温度调节器接通信号断开</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>3922 1879 4095 1952</position>
+				<barchart active="true" width="187" height="100" />
+			</node>
+			<node id="Short_circuit_or_open_circuit">
+				<name>7.1故障燃油排放阀回路短路断路</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>4661 1783 4834 1856</position>
+				<barchart active="true" width="169" height="80" />
+			</node>
+			<node id="Iron_filings_1">
+				<name>1.1燃油油滤有铁屑</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1170 1128 1343 1201</position>
+				<barchart active="true" width="169" height="66" />
+			</node>
+			<node id="Pressure_difference_1">
+				<name>1.1燃油泵自动滤器压差</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1821 1100 1869 1130</position>
+				<barchart active="true" width="214" height="66" />
+			</node>
+			<node id="Gear_pump_2">
+				<name>1.2齿轮泵</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1923 1743 2096 1816</position>
+				<barchart active="true" width="169" height="88" />
+			</node>
+			<node id="Fine_Oil_Filter_2">
+				<name>1.2细油滤</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1652 2843 1825 2916</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Breakdown_shutdown_2">
+				<name>1.2故障停车</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>958 2647 1131 2720</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Oil_leak_2">
+				<name>1.2齿轮泵漏油</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>941 1875 1114 1948</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Pressure_fluctuations_2">
+				<name>1.2燃油压力波动</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>925 2345 1098 2418</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Gear_pump_wear_2">
+				<name>1.2齿轮泵严重磨损</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1253 2789 1426 2862</position>
+				<barchart active="true" width="169" height="88" />
+			</node>
+			<node id="Shaft_seal_damaged_2">
+				<name>1.2齿轮泵轴封损坏</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1082 2097 1255 2170</position>
+				<barchart active="true" width="169" height="79" />
+			</node>
+			<node id="Iron_filings_2">
+				<name>1.2燃油油滤有铁屑</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1204 2305 1377 2378</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Pressure_difference_2">
+				<name>1.2燃油泵自动滤器压差</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1971 2582 2019 2612</position>
+				<barchart active="true" width="214" height="86" />
+			</node>
+			<node id="Gear_pump">
+				<name>齿轮泵</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>2004 493 2177 566</position>
+				<barchart active="true" width="169" height="88" />
+			</node>
+		</genie>
+	</extensions>
+</smile>

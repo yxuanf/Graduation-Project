@@ -1,0 +1,78 @@
+network unknown {
+}
+variable FuelDelivSys {
+    type discrete [ 2 ] { Defective, Correct };
+}
+variable FuelFilters {
+    type discrete [ 2 ] { Defective, Correct };
+}
+variable FuelPressDrop {
+    type discrete [ 2 ] { Present, Absent };
+}
+variable FuelPressHigh {
+    type discrete [ 2 ] { Present, Absent };
+}
+variable FuelPressLow {
+    type discrete [ 2 ] { Present, Absent };
+}
+variable FuelSightGlass {
+    type discrete [ 2 ] { Fail, Pass };
+}
+variable LoadTest {
+    type discrete [ 2 ] { Fail, Pass };
+}
+variable PressGauge {
+    type discrete [ 2 ] { Fail, Pass };
+}
+variable Visual {
+    type discrete [ 2 ] { Fail, Pass };
+}
+probability ( FuelDelivSys ) {
+    table 0.01, 0.99 ;
+}
+probability ( FuelFilters ) {
+    table 0.005, 0.995 ;
+}
+probability ( FuelPressDrop | FuelFilters ) {
+    ( Defective ) 0.900000001, 0.099999999;
+    ( Correct ) 0.01000000000000001, 0.99;
+
+}
+probability ( FuelPressHigh | FuelDelivSys ) {
+    ( Defective ) 0.04999999960000001, 0.9500000004;
+    ( Correct ) 0.01000000000000001, 0.99;
+
+}
+probability ( FuelPressLow | FuelFilters, FuelDelivSys ) {
+    ( Defective, Defective ) 0.8585858594141415, 0.1414141405858586;
+    ( Defective, Correct ) 0.800000002, 0.199999998;
+    ( Correct, Defective ) 0.2999999971, 0.7000000029;
+    ( Correct, Correct ) 0.01000000000000001, 0.99;
+
+}
+probability ( FuelSightGlass | FuelFilters, FuelDelivSys ) {
+    ( Defective, Defective ) 0.8181818198181818, 0.1818181801818182;
+    ( Defective, Correct ) 0.800000002, 0.199999998;
+    ( Correct, Defective ) 0.09999999910000001, 0.9000000009;
+    ( Correct, Correct ) 0.01000000000000001, 0.99;
+
+}
+probability ( LoadTest | FuelFilters, FuelDelivSys ) {
+    ( Defective, Defective ) 0.8585858594141415, 0.1414141405858586;
+    ( Defective, Correct ) 0.800000002, 0.199999998;
+    ( Correct, Defective ) 0.2999999971, 0.7000000029;
+    ( Correct, Correct ) 0.01000000000000001, 0.99;
+
+}
+probability ( PressGauge | FuelFilters, FuelDelivSys ) {
+    ( Defective, Defective ) 0.7575757594242425, 0.2424242405757575;
+    ( Defective, Correct ) 0.700000003, 0.299999997;
+    ( Correct, Defective ) 0.1999999981, 0.8000000019;
+    ( Correct, Correct ) 0.01000000000000001, 0.99;
+
+}
+probability ( Visual | FuelDelivSys ) {
+    ( Defective ) 0.1999999981, 0.8000000019;
+    ( Correct ) 0.01000000000000001, 0.99;
+
+}

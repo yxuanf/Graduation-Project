@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="Network7" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Thermostat_failure" diagtype="target">
+			<state id="发生" fault="true" />
+			<state id="未发生" />
+			<probabilities>0.0001 0.9999</probabilities>
+		</cpt>
+		<cpt id="Thermostat_circuit_disconnected" diagtype="target">
+			<state id="发生" fault="true" />
+			<state id="未发生" />
+			<probabilities>0.0001 0.9999</probabilities>
+			<property id="interface">input</property>
+		</cpt>
+		<cpt id="On_signal_off" diagtype="target">
+			<state id="发生" fault="true" />
+			<state id="未发生" />
+			<probabilities>0.0001 0.9999</probabilities>
+			<property id="interface">input</property>
+		</cpt>
+		<cpt id="Temperature_regulator" diagtype="target">
+			<state id="故障" fault="true" />
+			<state id="正常" />
+			<parents>Thermostat_failure Thermostat_circuit_disconnected On_signal_off</parents>
+			<probabilities>1 0 0.99 0.01000000000000001 0.99 0.01000000000000001 0.9 0.09999999999999998 0.99 0.01000000000000001 0.9 0.09999999999999998 0.85 0.15 0.01000000000000001 0.99</probabilities>
+			<property id="interface">output</property>
+		</cpt>
+		<cpt id="Low_protection_value" diagtype="observation" ranked="true">
+			<state id="发生" />
+			<state id="未发生" />
+			<parents>Thermostat_failure Thermostat_circuit_disconnected</parents>
+			<probabilities>0.9999 9.9999999999989e-05 0.99 0.01000000000000001 0.99 0.01000000000000001 9.999999999998899e-05 0.9999</probabilities>
+		</cpt>
+		<cpt id="No_power_on_signal" diagtype="observation" ranked="true">
+			<state id="发生" />
+			<state id="未发生" />
+			<parents>On_signal_off</parents>
+			<probabilities>0.9900099999999999 0.009990000000000001 0.001000000000000001 0.999</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 4.1.3402.0 ACADEMIC" name="温度调节器">
+			<node id="Temperature_regulator">
+				<name>温度调节器</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1044 157 1217 230</position>
+				<barchart active="true" width="187" height="77" />
+			</node>
+			<node id="Low_protection_value">
+				<name>5.1温度保护值偏低</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>652 281 825 354</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="No_power_on_signal">
+				<name>5.1没有温度调节器电源接通信号</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1393 310 1566 383</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Thermostat_failure">
+				<name>5.1温度调节器失效</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1045 683 1218 756</position>
+				<barchart active="true" width="196" height="89" />
+			</node>
+			<node id="Thermostat_circuit_disconnected">
+				<name>5.1温度调节器回路断开</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>724 822 897 895</position>
+				<barchart active="true" width="187" height="100" />
+			</node>
+			<node id="On_signal_off">
+				<name>5.1温度调节器接通信号断开</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1351 835 1524 908</position>
+				<barchart active="true" width="187" height="100" />
+			</node>
+		</genie>
+	</extensions>
+</smile>

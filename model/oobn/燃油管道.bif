@@ -1,0 +1,32 @@
+network unknown {
+}
+variable FuelL_Block {
+    type discrete [ 2 ] { good, bad };
+}
+variable Fuel_L {
+    type discrete [ 2 ] { good, bad };
+}
+variable Node1 {
+    type discrete [ 2 ] { fail, pass };
+}
+variable fuel_supply_advance_angle {
+    type discrete [ 2 ] { good, bad };
+}
+probability ( FuelL_Block ) {
+    table 0.99, 0.01 ;
+}
+probability ( Fuel_L | FuelL_Block, fuel_supply_advance_angle ) {
+    ( good, good ) 1.0, 0.0;
+    ( good, bad ) 0.2, 0.8;
+    ( bad, good ) 0.0, 1.0;
+    ( bad, bad ) 0.0, 1.0;
+
+}
+probability ( Node1 | FuelL_Block ) {
+    ( good ) 0.01000000000000001, 0.99;
+    ( bad ) 0.99, 0.01;
+
+}
+probability ( fuel_supply_advance_angle ) {
+    table 0.99, 0.01 ;
+}

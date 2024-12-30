@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="Network3" numsamples="1000" discsamples="10000">
+	<properties>
+		<property id="DIAG_alphaValue">0.00000000</property>
+		<property id="DIAG_maxAlphaValue">10.00000000</property>
+	</properties>
+	<nodes>
+		<cpt id="FuelL_Block" target="true" diagtype="target">
+			<state id="good" />
+			<state id="bad" fault="true" />
+			<probabilities>0.99 0.01</probabilities>
+		</cpt>
+		<cpt id="fuel_supply_advance_angle" diagtype="target">
+			<state id="good" />
+			<state id="bad" fault="true" />
+			<probabilities>0.99 0.01</probabilities>
+		</cpt>
+		<cpt id="Fuel_L" diagtype="target">
+			<state id="good" />
+			<state id="bad" fault="true" />
+			<parents>FuelL_Block fuel_supply_advance_angle</parents>
+			<probabilities>1 0 0.2 0.8 0 1 0 1</probabilities>
+		</cpt>
+		<cpt id="starting_injection_pressure" diagtype="target">
+			<state id="good" />
+			<state id="bad" fault="true" />
+			<probabilities>0.99 0.01</probabilities>
+		</cpt>
+		<cpt id="Poor_atom" diagtype="target">
+			<state id="good" />
+			<state id="bad" fault="true" />
+			<probabilities>0.99 0.01</probabilities>
+		</cpt>
+		<cpt id="FuelI_Block" diagtype="target">
+			<state id="good" />
+			<state id="bad" fault="true" />
+			<probabilities>0.99 0.01</probabilities>
+		</cpt>
+		<cpt id="Fuel_injector" diagtype="target">
+			<state id="good" />
+			<state id="deterioration" fault="true" />
+			<state id="bad" fault="true" />
+			<parents>starting_injection_pressure Poor_atom FuelI_Block</parents>
+			<probabilities>0.9 0.08999999999999998 0.01 0.05000000000000004 0.2 0.75 0.15 0.2 0.65 0.02000000000000002 0.2 0.78 0.09999999999999998 0.2 0.7 0.04000000000000004 0.2 0.76 0.07999999999999996 0.2 0.72 0.01000000000000001 0.2 0.79</probabilities>
+		</cpt>
+		<cpt id="Fuel_S" diagtype="target">
+			<state id="good" fault="true" />
+			<state id="bad" fault="true" />
+			<state id="deterioration" />
+			<parents>Fuel_L Fuel_injector</parents>
+			<probabilities>1 0 0 0.5 0.1 0.4 0 1 0 0 1 0 0 1 0 0 1 0</probabilities>
+		</cpt>
+		<cpt id="Ie_system" target="true" diagtype="target">
+			<state id="good" />
+			<state id="bad" fault="true" />
+			<probabilities>0.99 0.01</probabilities>
+		</cpt>
+		<cpt id="Cylinder" diagtype="target">
+			<state id="good" />
+			<state id="bad" fault="true" />
+			<probabilities>0.99 0.01</probabilities>
+		</cpt>
+		<cpt id="combustion_system" diagtype="target">
+			<state id="bad" fault="true" />
+			<state id="deterioration" fault="true" />
+			<state id="good" />
+			<parents>Fuel_S Ie_system Cylinder</parents>
+			<probabilities>0 0 1 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0.09999999999999998 0.8 0.1 1 0 0 1 0 0 1 0 0</probabilities>
+		</cpt>
+		<cpt id="Node1" diagtype="observation" ranked="true">
+			<state id="fail" />
+			<state id="pass" />
+			<parents>FuelL_Block</parents>
+			<probabilities>0.01000000000000001 0.99 0.99 0.01</probabilities>
+		</cpt>
+		<cpt id="Shaft" diagtype="target">
+			<state id="fault" fault="true" />
+			<state id="deterioration" fault="true" />
+			<state id="alert" fault="true" />
+			<state id="good" />
+			<probabilities>0.01999999999999991 0.03 0.05 0.9</probabilities>
+		</cpt>
+		<cpt id="DieselEngine" diagtype="target">
+			<state id="fault" fault="true" />
+			<state id="deterioration" fault="true" />
+			<state id="alert" fault="true" />
+			<state id="good" />
+			<parents>combustion_system</parents>
+			<probabilities>1 0 0 0 0.1000083116482923 0.5999830803941786 0.300008607957529 0 0 0.09999999999999998 0.09999999999999998 0.8</probabilities>
+		</cpt>
+		<cpt id="GearBox" diagtype="target">
+			<state id="fault" fault="true" />
+			<state id="deterioration" fault="true" />
+			<state id="alert" fault="true" />
+			<state id="good" />
+			<probabilities>0.01000000000000001 0.02 0.03 0.9399999999999999</probabilities>
+		</cpt>
+		<cpt id="PowerPlant" target="true" diagtype="target">
+			<state id="fault" fault="true" />
+			<state id="deterioration" fault="true" />
+			<state id="alert" fault="true" />
+			<state id="good" />
+			<parents>Shaft DieselEngine GearBox</parents>
+			<probabilities>1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 0.08800000000000008 0.9119999999999999 0 0 0.04000000000000004 0.9594999999999999 0.0005000000000000006 0 0.04000000000000004 0.9594999999999999 0.0005000000000000006 0 1 0 0 0 0.05000000000000004 0.95 0 0 0 0.95 0.05 0 0 0.95 0.05 0 1 0 0 0 0.05000000000000004 0.95 0 0 0 0.95 0.05 0 0 0.95 0.05 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 0.08800000000000008 0.9119999999999999 0 0 0.04000000000000004 0.9500999999999999 0.009900000000000011 0 0.04000000000000004 0.9500999999999999 0.009900000000000011 0 1 0 0 0 0.05000000000000004 0.95 0 0 0 0.01000000000000001 0.99 0 0 0.01000000000000001 0.99 0 1 0 0 0 0.05000000000000004 0.95 0 0 0 0.01000000000000001 0.99 0 0 0.01000000000000001 0.99 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 0.08800000000000008 0.9119999999999999 0 0 0.04000000000000004 0.95 0.01000000000000001 0 0.04000000000000004 0.95 0.01000000000000001 0 1 0 0 0 0.05000000000000004 0.95 0 0 0 0 1 0 0 0 1 0 1 0 0 0 0.05000000000000004 0.95 0 0 0 0 1 0 0 0 0.02000000000000002 0.98</probabilities>
+		</cpt>
+		<cpt id="star_Pre" diagtype="observation" ranked="true">
+			<state id="fail" />
+			<state id="pass" />
+			<parents>starting_injection_pressure</parents>
+			<probabilities>0.01000000000000001 0.99 0.99 0.01</probabilities>
+		</cpt>
+		<cpt id="Inj_pre" diagtype="observation" ranked="true">
+			<state id="fail" />
+			<state id="pass" />
+			<parents>FuelI_Block</parents>
+			<probabilities>0.01000000000000001 0.99 0.99 0.01</probabilities>
+		</cpt>
+		<cpt id="GearBoxVb" diagtype="observation" ranked="true">
+			<state id="fail" />
+			<state id="severe" />
+			<state id="medium" />
+			<state id="pass" />
+			<parents>GearBox</parents>
+			<probabilities>0.97 0.01 0.01 0.01 0.01 0.97 0.01 0.01 0.01 0.01 0.97 0.01 0.01 0.01 0.01 0.97</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 4.1.3402.0 ACADEMIC" name="Network3">
+			<node id="combustion_system">
+				<name>燃烧状况</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="10" />
+				<position>442 275 615 348</position>
+				<barchart active="true" width="184" height="92" />
+			</node>
+			<node id="Ie_system">
+				<name>进排气系统</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="10" />
+				<position>437 457 610 530</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Cylinder">
+				<name>气缸组件</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="10" />
+				<position>636 456 809 529</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Fuel_S">
+				<name>燃油系统</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="10" />
+				<position>242 443 415 516</position>
+				<barchart active="true" width="191" height="92" />
+			</node>
+			<node id="Fuel_L">
+				<name>燃油管路</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="10" />
+				<position>167 565 340 638</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Fuel_injector">
+				<name>喷油器</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="10" />
+				<position>608 640 781 713</position>
+				<barchart active="true" width="209" height="92" />
+			</node>
+			<node id="FuelL_Block">
+				<name>喷油管路阻塞</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="10" />
+				<position>5 785 178 858</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="fuel_supply_advance_angle">
+				<name>供油提前角异常</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="10" />
+				<position>190 784 363 857</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="starting_injection_pressure">
+				<name>起喷压力低</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="10" />
+				<position>504 866 677 939</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Poor_atom">
+				<name>喷油器雾化不良</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="10" />
+				<position>693 867 873 940</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="FuelI_Block">
+				<name>喷油器阻塞</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="10" />
+				<position>874 779 1047 852</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="DieselEngine">
+				<name>发动机</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="10" />
+				<position>693 193 866 266</position>
+				<barchart active="true" width="184" height="100" />
+			</node>
+			<node id="GearBox">
+				<name>齿轮箱</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="10" />
+				<position>943 279 1116 352</position>
+				<barchart active="true" width="184" height="100" />
+			</node>
+			<node id="Shaft">
+				<name>轴系</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="10" />
+				<position>343 124 516 197</position>
+				<barchart active="true" width="184" height="100" />
+			</node>
+			<node id="PowerPlant">
+				<name>动力装置</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="10" />
+				<position>720 18 893 91</position>
+				<barchart active="true" width="184" height="100" />
+			</node>
+			<node id="Node1">
+				<name>喷油管压力</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>49 465 129 518</position>
+				<barchart active="true" />
+			</node>
+			<node id="star_Pre">
+				<name>起喷压力检测</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>391 712 480 766</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Inj_pre">
+				<name>喷油压力</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>966 619 1057 666</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="GearBoxVb">
+				<name>齿轮箱振动</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1232 170 1305 215</position>
+				<barchart active="true" width="128" height="90" />
+			</node>
+			<arcformat parent="combustion_system" child="DieselEngine" width="2" color="a0a0a0" />
+		</genie>
+	</extensions>
+</smile>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="EngineFuelProblems" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="FuelFilters" diagtype="target">
+			<state id="Defective" fault="true" />
+			<state id="Correct" />
+			<probabilities>0.005 0.995</probabilities>
+		</cpt>
+		<cpt id="FuelDelivSys" diagtype="target">
+			<state id="Defective" fault="true" />
+			<state id="Correct" />
+			<probabilities>0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="FuelPressLow" diagtype="observation">
+			<state id="Present" />
+			<state id="Absent" default="true" />
+			<parents>FuelFilters FuelDelivSys</parents>
+			<probabilities>0.8585858594141415 0.1414141405858586 0.800000002 0.199999998 0.2999999971 0.7000000029 0.01000000000000001 0.99</probabilities>
+		</cpt>
+		<cpt id="FuelPressHigh" diagtype="observation">
+			<state id="Present" />
+			<state id="Absent" default="true" />
+			<parents>FuelDelivSys</parents>
+			<probabilities>0.04999999960000001 0.9500000004 0.01000000000000001 0.99</probabilities>
+		</cpt>
+		<cpt id="FuelPressDrop" diagtype="observation">
+			<state id="Present" />
+			<state id="Absent" default="true" />
+			<parents>FuelFilters</parents>
+			<probabilities>0.900000001 0.09999999900000001 0.01000000000000001 0.99</probabilities>
+		</cpt>
+		<cpt id="FuelSightGlass" diagtype="observation" ranked="true">
+			<state id="Fail" />
+			<state id="Pass" />
+			<parents>FuelFilters FuelDelivSys</parents>
+			<probabilities>0.8181818198181818 0.1818181801818182 0.800000002 0.199999998 0.09999999910000001 0.9000000009 0.01000000000000001 0.99</probabilities>
+		</cpt>
+		<cpt id="Visual" diagtype="observation" ranked="true">
+			<state id="Fail" />
+			<state id="Pass" />
+			<parents>FuelDelivSys</parents>
+			<probabilities>0.1999999981 0.8000000019 0.01000000000000001 0.99</probabilities>
+		</cpt>
+		<cpt id="PressGauge" diagtype="observation" ranked="true">
+			<state id="Fail" />
+			<state id="Pass" />
+			<parents>FuelFilters FuelDelivSys</parents>
+			<probabilities>0.7575757594242425 0.2424242405757575 0.700000003 0.299999997 0.1999999981 0.8000000019 0.01000000000000001 0.99</probabilities>
+		</cpt>
+		<cpt id="LoadTest" diagtype="observation" ranked="true">
+			<state id="Fail" />
+			<state id="Pass" />
+			<parents>FuelFilters FuelDelivSys</parents>
+			<probabilities>0.8585858594141415 0.1414141405858586 0.800000002 0.199999998 0.2999999971 0.7000000029 0.01000000000000001 0.99</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 4.1.3402.0 ACADEMIC" name="Engine Fuel Problems">
+			<comment>A simple diagnostic model of a vehicle fuel system.\n\nReference:\nBayesFusion, LLC</comment>
+			<node id="FuelFilters">
+				<name>Fuel Filters and Bypass Valves</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000080" name="Arial" size="10" />
+				<position>260 79 392 127</position>
+				<state id="Defective" faultname="F40. Fuel Filters and Bypass Valves" />
+				<state id="Correct" faultname="OK" />
+				<barchart active="true" width="214" height="64" />
+			</node>
+			<node id="FuelDelivSys">
+				<name>Fuel Delivery System</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000080" name="Arial" size="10" />
+				<position>493 77 595 130</position>
+				<state id="Defective" faultname="F41. Fuel Delivery System" />
+				<state id="Correct" faultname="OK" />
+				<barchart active="true" width="169" height="64" />
+			</node>
+			<node id="FuelPressLow">
+				<name>Fuel Pressure Low</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000080" name="Arial" size="10" />
+				<position>224 311 316 377</position>
+				<comment>50 PID\tFuel Pressure engine in, FMI  Below RangeEM2000 messages are #1475, #1476. There are two states: present and Not present.References: DTS pp. 14-17, ETS p. 4.  \tSTATES: absent/present; present means SID 50 with FMI Below Range  present in archive over 20 times or active\t\t\t\t</comment>
+				<state id="Present" faultname="absent" />
+				<state id="Absent" faultname="present" />
+				<barchart active="true" width="134" height="64" />
+			</node>
+			<node id="FuelPressHigh">
+				<name>Fuel Pressure High</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000080" name="Arial" size="10" />
+				<position>662 228 756 291</position>
+				<comment>50 PID\tFuel Pressure engine in, FMI  Above RangeReferences: ETrG p. 69  \tSTATES: absent/present; present means SID 50 with FMI Above Range   present in archive over 20 times or active\t\t\t\t</comment>
+				<state id="Present" faultname="absent" />
+				<state id="Absent" faultname="present" />
+				<barchart active="true" width="144" height="60" />
+			</node>
+			<node id="FuelPressDrop">
+				<name>Fuel Pressure Drop</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000080" name="Arial" size="10" />
+				<position>220 180 313 244</position>
+				<comment>53 PID\tFuel Pressure drop primary filter , FMI: Health Low/Health Critical\tSTATES: absent/present; present means SID 53 with  : FMI: Health Low/Health Critical present in archive over 20 times or active\t\t\t</comment>
+				<state id="Present" faultname="absent" />
+				<state id="Absent" faultname="present" />
+				<barchart active="true" width="161" height="64" />
+			</node>
+			<node id="FuelSightGlass">
+				<name>Inspection Fuel Sight Glasses</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000080" name="Arial" size="10" />
+				<position>336 398 448 462</position>
+				<comment>References: DTS p. 14, ETrG p. 69, ETS p. 4.STATES: pass/fail; fail means that primary sight glass is not full and/or contains bubbles (suction leak) and/or secondary glass contains fuel (fuel bypassing filter).</comment>
+				<state id="Fail" faultname="pass" />
+				<state id="Pass" faultname="fail" />
+				<barchart active="true" width="196" height="64" />
+			</node>
+			<node id="Visual">
+				<name>Visual Inspection of the Fuel System</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000080" name="Arial" size="10" />
+				<position>662 139 798 196</position>
+				<comment>STATES: pass/fail; fail means that visual inspection has detected leaks or other damage in the fuel system</comment>
+				<state id="Fail" faultname="pass" />
+				<state id="Pass" faultname="fail" />
+				<barchart active="true" width="143" height="80" />
+			</node>
+			<node id="PressGauge">
+				<name>Pressure Gauge Test of Fuel System</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000080" name="Arial" size="10" />
+				<position>613 315 757 381</position>
+				<comment>References: DTS p. 14, TEG p. 69, ETS p. 4.STATES: pass/fail; fail means that pressure in the fuel system is outside of  the norm\t\t</comment>
+				<state id="Fail" faultname="pass" />
+				<state id="Pass" faultname="fail" />
+				<barchart active="true" width="145" height="76" />
+			</node>
+			<node id="LoadTest">
+				<name>Load Test Fuel Pressure</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000080" name="Arial" size="10" />
+				<position>537 403 648 459</position>
+				<comment>Load test performed at throttle 8 with fuel pressure checked. References: DTS p. 14, ETrG p. 69, ETS p. 4.STATES: pass/fail; fail means that pressure in the fuel system is lower than 60 psi .</comment>
+				<state id="Fail" faultname="pass" />
+				<state id="Pass" faultname="fail" />
+				<barchart active="true" width="177" height="64" />
+			</node>
+			<textbox>
+				<caption>A simple diagnostic model of a vehicle fuel system.</caption>
+				<font color="000080" name="Arial" size="12" bold="true" />
+				<position>253 483 638 502</position>
+			</textbox>
+		</genie>
+	</extensions>
+</smile>

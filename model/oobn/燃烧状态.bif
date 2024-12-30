@@ -1,0 +1,56 @@
+network unknown {
+}
+variable Cylinder {
+    type discrete [ 2 ] { good, bad };
+}
+variable Fuel_L {
+    type discrete [ 2 ] { good, bad };
+}
+variable Fuel_S {
+    type discrete [ 3 ] { good, bad, deterioration };
+}
+variable Fuel_injector {
+    type discrete [ 3 ] { good, deterioration, bad };
+}
+variable Ie_system {
+    type discrete [ 2 ] { good, bad };
+}
+variable combustion_system {
+    type discrete [ 3 ] { bad, deterioration, good };
+}
+probability ( Cylinder ) {
+    table 0.99, 0.01 ;
+}
+probability ( Fuel_L ) {
+    table 1.0, 0.0 ;
+}
+probability ( Fuel_S | Fuel_L, Fuel_injector ) {
+    ( good, good ) 1.0, 0.0, 0.0;
+    ( good, deterioration ) 0.5, 0.1, 0.4;
+    ( good, bad ) 0.0, 1.0, 0.0;
+    ( bad, good ) 0.0, 1.0, 0.0;
+    ( bad, deterioration ) 0.0, 1.0, 0.0;
+    ( bad, bad ) 0.0, 1.0, 0.0;
+
+}
+probability ( Fuel_injector ) {
+    table 0.9, 0.08999999999999998, 0.01 ;
+}
+probability ( Ie_system ) {
+    table 0.99, 0.01 ;
+}
+probability ( combustion_system | Fuel_S, Ie_system, Cylinder ) {
+    ( good, good, good ) 0.0, 0.0, 1.0;
+    ( good, good, bad ) 1.0, 0.0, 0.0;
+    ( good, bad, good ) 1.0, 0.0, 0.0;
+    ( good, bad, bad ) 1.0, 0.0, 0.0;
+    ( bad, good, good ) 1.0, 0.0, 0.0;
+    ( bad, good, bad ) 1.0, 0.0, 0.0;
+    ( bad, bad, good ) 1.0, 0.0, 0.0;
+    ( bad, bad, bad ) 1.0, 0.0, 0.0;
+    ( deterioration, good, good ) 0.09999999999999998, 0.8, 0.1;
+    ( deterioration, good, bad ) 1.0, 0.0, 0.0;
+    ( deterioration, bad, good ) 1.0, 0.0, 0.0;
+    ( deterioration, bad, bad ) 1.0, 0.0, 0.0;
+
+}

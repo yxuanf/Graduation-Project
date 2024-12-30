@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="Network11" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Fuel_regulator" diagtype="target">
+			<state id="故障" fault="true" />
+			<state id="正常" />
+			<probabilities>0.1003888651204993 0.8996111348795008</probabilities>
+			<property id="interface">input</property>
+		</cpt>
+		<cpt id="Start_fueling" diagtype="target">
+			<state id="故障" fault="true" />
+			<state id="正常" />
+			<probabilities>0.000299950002999989 0.999700049997</probabilities>
+			<property id="interface">input</property>
+		</cpt>
+		<cpt id="Automatic_fuel_dispenser" diagtype="target">
+			<state id="故障" fault="true" />
+			<state id="劣化" />
+			<state id="正常" />
+			<probabilities>0.01035631546183694 0.009899989840642789 0.9797436946975204</probabilities>
+			<property id="interface">input</property>
+		</cpt>
+		<cpt id="Faulty_fuel_drain_valve" diagtype="target">
+			<state id="故障" fault="true" />
+			<state id="劣化" />
+			<state id="正常" />
+			<probabilities>0.000279972000999989 0.009917818118999999 0.98980220988</probabilities>
+			<property id="interface">input</property>
+		</cpt>
+		<cpt id="Gear_pump" diagtype="target">
+			<state id="故障" fault="true" />
+			<state id="劣化" />
+			<state id="正常" />
+			<probabilities>0.3 0.4 0.2999999999999999</probabilities>
+			<property id="interface">input</property>
+		</cpt>
+		<cpt id="Fuel_System" diagtype="target">
+			<state id="故障" fault="true" />
+			<state id="劣化" fault="true" />
+			<state id="报警" />
+			<state id="正常" />
+			<parents>Fuel_regulator Start_fueling Automatic_fuel_dispenser Faulty_fuel_drain_valve Gear_pump</parents>
+			<probabilities>1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 0.1 0.8 0.099 0.0009999999999999731 0.05 0.7 0.2 0.04999999999999999 1 0 0 0 0.05 0.7 0.2 0.04999999999999999 0.04000000000000004 0.95 0.01000000000000001 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 0.05 0.7 0.2 0.04999999999999999 0.04000000000000004 0.95 0.01000000000000001 0 1 0 0 0 0 0 0.1 0.9 0 0 0.02000000000000002 0.98</probabilities>
+			<property id="interface">output</property>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 4.1.3402.0 ACADEMIC" name="燃油系统">
+			<node id="Fuel_System">
+				<name>燃油系统</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1361 279 1534 352</position>
+				<barchart active="true" width="270" height="110" />
+			</node>
+			<node id="Faulty_fuel_drain_valve">
+				<name>故障燃油排放阀</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>2111 874 2284 947</position>
+				<barchart active="true" width="169" height="88" />
+			</node>
+			<node id="Fuel_regulator">
+				<name>燃油调节器</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>857 838 1030 911</position>
+				<barchart active="true" width="195" height="89" />
+			</node>
+			<node id="Automatic_fuel_dispenser">
+				<name>自动燃油分配器</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1717 875 1890 948</position>
+				<barchart active="true" width="169" height="88" />
+			</node>
+			<node id="Start_fueling">
+				<name>启动供油组件</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1311 856 1484 929</position>
+				<barchart active="true" width="230" height="113" />
+			</node>
+			<node id="Gear_pump">
+				<name>齿轮泵</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>461 818 634 891</position>
+				<barchart active="true" width="169" height="88" />
+			</node>
+		</genie>
+	</extensions>
+</smile>

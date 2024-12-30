@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="Network6" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Start_fuel_valve" diagtype="target">
+			<state id="不密封" fault="true" />
+			<state id="正常" />
+			<probabilities>0.0001 0.9999</probabilities>
+			<property id="interface">input</property>
+		</cpt>
+		<cpt id="Check_valve" diagtype="target">
+			<state id="不密封" fault="true" />
+			<state id="正常" />
+			<probabilities>0.0001 0.9999</probabilities>
+			<property id="interface">input</property>
+		</cpt>
+		<cpt id="Start_fueling" diagtype="target">
+			<state id="故障" fault="true" />
+			<state id="正常" />
+			<parents>Start_fuel_valve Check_valve</parents>
+			<probabilities>1 0 0.9999 9.999999999998899e-05 0.9999 9.999999999998899e-05 9.999999999998899e-05 0.9999</probabilities>
+			<property id="interface">output</property>
+		</cpt>
+		<cpt id="Injector_pressure_fluctuation" diagtype="observation" ranked="true">
+			<state id="发生" />
+			<state id="未发生" />
+			<parents>Start_fuel_valve Check_valve</parents>
+			<probabilities>0.997500025 0.002499975 0.9500005 0.0499995 0.9500005 0.0499995 9.99999999995449e-06 0.99999</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 4.1.3402.0 ACADEMIC" name="启动供油组件">
+			<node id="Start_fuel_valve">
+				<name>4.1启动燃油阀</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>652 776 825 849</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Check_valve">
+				<name>4.1止回阀</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1316 787 1489 860</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Start_fueling">
+				<name>启动供油组件</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>975 192 1148 265</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Injector_pressure_fluctuation">
+				<name>4.1喷油嘴前燃油压力波动</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>990 536 1163 609</position>
+				<barchart active="true" width="195" height="88" />
+			</node>
+		</genie>
+	</extensions>
+</smile>

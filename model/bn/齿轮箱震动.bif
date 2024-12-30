@@ -1,0 +1,18 @@
+network unknown {
+}
+variable GearBox {
+    type discrete [ 4 ] { fault, deterioration, alert, good };
+}
+variable GearBoxVb {
+    type discrete [ 4 ] { fail, severe, medium, pass };
+}
+probability ( GearBox ) {
+    table 0.01000000000000001, 0.02, 0.03, 0.94 ;
+}
+probability ( GearBoxVb | GearBox ) {
+    ( fault ) 0.97, 0.01, 0.01, 0.01;
+    ( deterioration ) 0.01, 0.97, 0.01, 0.01;
+    ( alert ) 0.01, 0.01, 0.97, 0.01;
+    ( good ) 0.01, 0.01, 0.01, 0.97;
+
+}

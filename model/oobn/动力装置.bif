@@ -1,0 +1,99 @@
+network unknown {
+}
+variable DieselEngine {
+    type discrete [ 4 ] { fault, deterioration, alert, good };
+}
+variable GearBox {
+    type discrete [ 4 ] { fault, deterioration, alert, good };
+}
+variable PowerPlant {
+    type discrete [ 4 ] { fault, deterioration, alert, good };
+}
+variable Shaft {
+    type discrete [ 4 ] { fault, deterioration, alert, good };
+}
+variable combustion_system {
+    type discrete [ 3 ] { bad, deterioration, good };
+}
+probability ( DieselEngine | combustion_system ) {
+    ( bad ) 1.0, 0.0, 0.0, 0.0;
+    ( deterioration ) 0.1000083116482923, 0.5999830803941786, 0.300008607957529, 0.0;
+    ( good ) 0.0, 0.09999999999999998, 0.09999999999999998, 0.8;
+
+}
+probability ( GearBox ) {
+    table 0.01000000000000001, 0.02, 0.03, 0.94 ;
+}
+probability ( PowerPlant | Shaft, DieselEngine, GearBox ) {
+    ( fault, fault, fault ) 1.0, 0.0, 0.0, 0.0;
+    ( fault, fault, deterioration ) 1.0, 0.0, 0.0, 0.0;
+    ( fault, fault, alert ) 1.0, 0.0, 0.0, 0.0;
+    ( fault, fault, good ) 1.0, 0.0, 0.0, 0.0;
+    ( fault, deterioration, fault ) 1.0, 0.0, 0.0, 0.0;
+    ( fault, deterioration, deterioration ) 1.0, 0.0, 0.0, 0.0;
+    ( fault, deterioration, alert ) 1.0, 0.0, 0.0, 0.0;
+    ( fault, deterioration, good ) 1.0, 0.0, 0.0, 0.0;
+    ( fault, alert, fault ) 1.0, 0.0, 0.0, 0.0;
+    ( fault, alert, deterioration ) 1.0, 0.0, 0.0, 0.0;
+    ( fault, alert, alert ) 1.0, 0.0, 0.0, 0.0;
+    ( fault, alert, good ) 1.0, 0.0, 0.0, 0.0;
+    ( fault, good, fault ) 1.0, 0.0, 0.0, 0.0;
+    ( fault, good, deterioration ) 1.0, 0.0, 0.0, 0.0;
+    ( fault, good, alert ) 1.0, 0.0, 0.0, 0.0;
+    ( fault, good, good ) 1.0, 0.0, 0.0, 0.0;
+    ( deterioration, fault, fault ) 1.0, 0.0, 0.0, 0.0;
+    ( deterioration, fault, deterioration ) 1.0, 0.0, 0.0, 0.0;
+    ( deterioration, fault, alert ) 1.0, 0.0, 0.0, 0.0;
+    ( deterioration, fault, good ) 1.0, 0.0, 0.0, 0.0;
+    ( deterioration, deterioration, fault ) 1.0, 0.0, 0.0, 0.0;
+    ( deterioration, deterioration, deterioration ) 0.08800000000000008, 0.9119999999999999, 0.0, 0.0;
+    ( deterioration, deterioration, alert ) 0.04000000000000004, 0.9594999999999999, 0.0005000000000000006, 0.0;
+    ( deterioration, deterioration, good ) 0.04000000000000004, 0.9594999999999999, 0.0005000000000000006, 0.0;
+    ( deterioration, alert, fault ) 1.0, 0.0, 0.0, 0.0;
+    ( deterioration, alert, deterioration ) 0.05000000000000004, 0.95, 0.0, 0.0;
+    ( deterioration, alert, alert ) 0.0, 0.95, 0.05, 0.0;
+    ( deterioration, alert, good ) 0.0, 0.95, 0.05, 0.0;
+    ( deterioration, good, fault ) 1.0, 0.0, 0.0, 0.0;
+    ( deterioration, good, deterioration ) 0.05000000000000004, 0.95, 0.0, 0.0;
+    ( deterioration, good, alert ) 0.0, 0.95, 0.05, 0.0;
+    ( deterioration, good, good ) 0.0, 0.95, 0.05, 0.0;
+    ( alert, fault, fault ) 1.0, 0.0, 0.0, 0.0;
+    ( alert, fault, deterioration ) 1.0, 0.0, 0.0, 0.0;
+    ( alert, fault, alert ) 1.0, 0.0, 0.0, 0.0;
+    ( alert, fault, good ) 1.0, 0.0, 0.0, 0.0;
+    ( alert, deterioration, fault ) 1.0, 0.0, 0.0, 0.0;
+    ( alert, deterioration, deterioration ) 0.08800000000000008, 0.9119999999999999, 0.0, 0.0;
+    ( alert, deterioration, alert ) 0.04000000000000004, 0.9501, 0.009900000000000011, 0.0;
+    ( alert, deterioration, good ) 0.04000000000000004, 0.9501, 0.009900000000000011, 0.0;
+    ( alert, alert, fault ) 1.0, 0.0, 0.0, 0.0;
+    ( alert, alert, deterioration ) 0.05000000000000004, 0.95, 0.0, 0.0;
+    ( alert, alert, alert ) 0.0, 0.01000000000000001, 0.99, 0.0;
+    ( alert, alert, good ) 0.0, 0.01000000000000001, 0.99, 0.0;
+    ( alert, good, fault ) 1.0, 0.0, 0.0, 0.0;
+    ( alert, good, deterioration ) 0.05000000000000004, 0.95, 0.0, 0.0;
+    ( alert, good, alert ) 0.0, 0.01000000000000001, 0.99, 0.0;
+    ( alert, good, good ) 0.0, 0.01000000000000001, 0.99, 0.0;
+    ( good, fault, fault ) 1.0, 0.0, 0.0, 0.0;
+    ( good, fault, deterioration ) 1.0, 0.0, 0.0, 0.0;
+    ( good, fault, alert ) 1.0, 0.0, 0.0, 0.0;
+    ( good, fault, good ) 1.0, 0.0, 0.0, 0.0;
+    ( good, deterioration, fault ) 1.0, 0.0, 0.0, 0.0;
+    ( good, deterioration, deterioration ) 0.08800000000000008, 0.9119999999999999, 0.0, 0.0;
+    ( good, deterioration, alert ) 0.04000000000000004, 0.95, 0.01000000000000001, 0.0;
+    ( good, deterioration, good ) 0.04000000000000004, 0.95, 0.01000000000000001, 0.0;
+    ( good, alert, fault ) 1.0, 0.0, 0.0, 0.0;
+    ( good, alert, deterioration ) 0.05000000000000004, 0.95, 0.0, 0.0;
+    ( good, alert, alert ) 0.0, 0.0, 1.0, 0.0;
+    ( good, alert, good ) 0.0, 0.0, 1.0, 0.0;
+    ( good, good, fault ) 1.0, 0.0, 0.0, 0.0;
+    ( good, good, deterioration ) 0.05000000000000004, 0.95, 0.0, 0.0;
+    ( good, good, alert ) 0.0, 0.0, 1.0, 0.0;
+    ( good, good, good ) 0.0, 0.0, 0.02000000000000002, 0.98;
+
+}
+probability ( Shaft ) {
+    table 0.01999999999999991, 0.03, 0.05, 0.9 ;
+}
+probability ( combustion_system ) {
+    table 0.0, 0.0, 1.0 ;
+}
