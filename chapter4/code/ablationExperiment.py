@@ -3,7 +3,7 @@ from matplotlib import pyplot as plt
 from mpl_toolkits.axes_grid1.inset_locator import zoomed_inset_axes, mark_inset
 
 if __name__ == '__main__':
-    df = pd.read_excel("./chapter3/data/excel/消融实验1.xlsx")
+    df = pd.read_excel("./chapter4/data/excel/消融实验1.xlsx")
     plt.rcParams['font.family'] = ['DejaVu Sans', 'SimHei']
     fig, ax = plt.subplots()
     x = df['datasize']
