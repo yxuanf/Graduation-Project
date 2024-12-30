@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="Network2" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Fine_Oil_Filter_1" diagtype="target">
+			<state id="脏污" fault="true" />
+			<state id="正常" />
+			<probabilities>0.0001 0.9999</probabilities>
+			<property id="interface">input</property>
+		</cpt>
+		<cpt id="Shaft_seal_damaged_1" diagtype="target">
+			<state id="发生" fault="true" />
+			<state id="未发生" />
+			<probabilities>0.0001 0.9999</probabilities>
+		</cpt>
+		<cpt id="Gear_pump_wear_1" diagtype="target">
+			<state id="发生" fault="true" />
+			<state id="劣化" />
+			<state id="未发生" />
+			<probabilities>0.0001 0.009900000000000001 0.99</probabilities>
+			<property id="interface">input</property>
+		</cpt>
+		<cpt id="Gear_pump_1" diagtype="target">
+			<state id="故障" fault="true" />
+			<state id="劣化" />
+			<state id="正常" />
+			<parents>Fine_Oil_Filter_1 Shaft_seal_damaged_1 Gear_pump_wear_1</parents>
+			<probabilities>1 0 0 1 0 0 1 0 0 1 0 0 0.6 0.35 0.05000000000000004 0.2 0.4 0.4 1 0 0 0.6 0.35 0.05000000000000004 0.2 0.4 0.4 0.2 0.4 0.4 0.1 0.25 0.65 0.01 0.08999999999999997 0.9</probabilities>
+			<property id="interface">output</property>
+		</cpt>
+		<cpt id="Breakdown_shutdown_1" diagtype="observation" ranked="true">
+			<state id="发生" />
+			<state id="未发生" />
+			<parents>Gear_pump_wear_1</parents>
+			<probabilities>0.999999990001 9.999000000000001e-09 0.999910009 8.999100000000001e-05 0.99990001 9.999000000000001e-05</probabilities>
+		</cpt>
+		<cpt id="Oil_leak_1" diagtype="observation" ranked="true">
+			<state id="发生" />
+			<state id="未发生" />
+			<parents>Shaft_seal_damaged_1</parents>
+			<probabilities>0.999 0.001 0.0001 0.9999</probabilities>
+		</cpt>
+		<cpt id="Iron_filings_1" diagtype="observation" ranked="true">
+			<state id="发生" />
+			<state id="未发生" />
+			<parents>Gear_pump_wear_1</parents>
+			<probabilities>0.99 0.01 0.6 0.4 0.05 0.95</probabilities>
+		</cpt>
+		<cpt id="Pressure_difference_1" diagtype="observation" ranked="true">
+			<state id="偏高" />
+			<state id="正常" />
+			<parents>Fine_Oil_Filter_1</parents>
+			<probabilities>0.9999 9.999999999998899e-05 0.0001 0.9999</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 4.1.3402.0 ACADEMIC" name="齿轮泵1.1">
+			<node id="Gear_pump_1">
+				<name>1.1齿轮泵</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1361 107 1534 180</position>
+				<barchart active="true" width="238" height="113" />
+			</node>
+			<node id="Fine_Oil_Filter_1">
+				<name>1.1细油滤</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1602 1272 1775 1345</position>
+				<barchart active="true" width="179" height="88" />
+			</node>
+			<node id="Breakdown_shutdown_1">
+				<name>1.1故障停车</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>740 896 913 969</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Oil_leak_1">
+				<name>1.1齿轮泵漏油</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>809 139 982 212</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Gear_pump_wear_1">
+				<name>1.1齿轮泵严重磨损</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1010 1268 1183 1341</position>
+				<barchart active="true" width="169" height="88" />
+			</node>
+			<node id="Shaft_seal_damaged_1">
+				<name>1.1齿轮泵轴封损坏</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>937 353 1110 426</position>
+				<barchart active="true" width="169" height="79" />
+			</node>
+			<node id="Iron_filings_1">
+				<name>1.1燃油油滤有铁屑</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>976 819 1149 892</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Pressure_difference_1">
+				<name>1.1燃油泵自动滤器压差</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1898 810 1946 840</position>
+				<barchart active="true" width="183" height="110" />
+			</node>
+		</genie>
+	</extensions>
+</smile>

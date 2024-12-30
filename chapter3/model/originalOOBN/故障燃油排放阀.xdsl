@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="Network10" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Throttle" diagtype="target">
+			<state id="积垢" fault="true" />
+			<state id="正常" />
+			<probabilities>0.0001 0.9999</probabilities>
+			<property id="interface">input</property>
+		</cpt>
+		<cpt id="Short_circuit_or_open_circuit" diagtype="target">
+			<state id="发生" fault="true" />
+			<state id="未发生" />
+			<probabilities>0.0001 0.9999</probabilities>
+			<property id="interface">input</property>
+		</cpt>
+		<cpt id="Faulty_fuel_drain_valve" diagtype="target">
+			<state id="故障" fault="true" />
+			<state id="劣化" />
+			<state id="正常" />
+			<parents>Throttle Short_circuit_or_open_circuit</parents>
+			<probabilities>1 0 0 0.9 0.099 0.0009999999999999731 0.9 0.099 0.0009999999999999731 9.999999999998899e-05 0.009900000000000001 0.99</probabilities>
+			<property id="interface">output</property>
+		</cpt>
+		<cpt id="No_working_signal" diagtype="observation" ranked="true">
+			<state id="发生" />
+			<state id="未发生" />
+			<parents>Short_circuit_or_open_circuit</parents>
+			<probabilities>0.9999999900001 9.999900000000001e-09 0.999900001 9.9999e-05</probabilities>
+		</cpt>
+		<cpt id="Thermostat_check_abnormality" diagtype="observation" ranked="true">
+			<state id="发生" />
+			<state id="未发生" />
+			<parents>Throttle</parents>
+			<probabilities>0.800002 0.199998 9.99999999995449e-06 0.99999</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 4.1.3402.0 ACADEMIC" name="故障燃油排放阀">
+			<node id="Faulty_fuel_drain_valve">
+				<name>故障燃油排放阀</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>889 180 1062 253</position>
+				<barchart active="true" width="169" height="88" />
+			</node>
+			<node id="Throttle">
+				<name>7.1节流器</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1142 904 1315 977</position>
+				<barchart active="true" width="174" height="76" />
+			</node>
+			<node id="No_working_signal">
+				<name>7.1温度调节器无工作信号</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>539 428 712 501</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Thermostat_check_abnormality">
+				<name>7.1温度调节器检查异常</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1286 435 1459 508</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Short_circuit_or_open_circuit">
+				<name>7.1故障燃油排放阀回路短路断路</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>676 882 849 955</position>
+				<barchart active="true" width="169" height="80" />
+			</node>
+		</genie>
+	</extensions>
+</smile>

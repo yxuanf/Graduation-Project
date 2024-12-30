@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="Network9" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Temperature_regulator" diagtype="target">
+			<state id="故障" fault="true" />
+			<state id="正常" />
+			<probabilities>0.01026197700067 0.98973802299933</probabilities>
+			<property id="interface">input</property>
+		</cpt>
+		<cpt id="Parking_switch" diagtype="target">
+			<state id="未打开" fault="true" />
+			<state id="正常" />
+			<probabilities>9.999999999999998e-05 0.9999000000000001</probabilities>
+			<property id="interface">input</property>
+		</cpt>
+		<cpt id="Automatic_fuel_dispenser" diagtype="target">
+			<state id="故障" fault="true" />
+			<state id="劣化" />
+			<state id="正常" />
+			<parents>Temperature_regulator Parking_switch</parents>
+			<probabilities>0.9999999999999999 0 0 0.99 0.009900000000000001 0.0001000000000000081 0.99 0.009900000000000001 0.0001000000000000081 0.0001 0.00990000000000002 0.99</probabilities>
+			<property id="interface">output</property>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 4.1.3402.0 ACADEMIC" name="自动燃油分配器">
+			<node id="Temperature_regulator">
+				<name>温度调节器</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>685 540 858 613</position>
+				<barchart active="true" width="187" height="77" />
+			</node>
+			<node id="Automatic_fuel_dispenser">
+				<name>自动燃油分配器</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>961 163 1134 236</position>
+				<barchart active="true" width="169" height="88" />
+			</node>
+			<node id="Parking_switch">
+				<name>6.1停车开关组件</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>1261 544 1434 617</position>
+				<barchart active="true" width="182" height="81" />
+			</node>
+		</genie>
+	</extensions>
+</smile>
