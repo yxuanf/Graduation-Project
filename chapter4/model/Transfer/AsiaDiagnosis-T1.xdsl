@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="Asia" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="VisitToAsia" diagtype="observation" ranked="true">
+			<state id="NoVisit" />
+			<state id="Visit" />
+			<probabilities>0.9193548387096774 0.08064516129032258</probabilities>
+		</cpt>
+		<cpt id="Tuberculosis" diagtype="target">
+			<state id="Absent" label="F5" />
+			<state id="Present" fault="true" />
+			<parents>VisitToAsia</parents>
+			<probabilities>0.9827586206896551 0.01724137931034483 0.8333333333333333 0.1666666666666667</probabilities>
+		</cpt>
+		<cpt id="Smoking" diagtype="observation" ranked="true">
+			<state id="NonSmoker" />
+			<state id="Smoker" />
+			<probabilities>0.564516129032258 0.4354838709677419</probabilities>
+		</cpt>
+		<cpt id="LungCancer" diagtype="target">
+			<state id="Absent" />
+			<state id="Present" fault="true" />
+			<parents>Smoking</parents>
+			<probabilities>0.9722222222222222 0.02777777777777778 0.8928571428571428 0.1071428571428571</probabilities>
+		</cpt>
+		<cpt id="TbOrCa">
+			<state id="Nothing" />
+			<state id="CancerORTuberculosis" />
+			<parents>Tuberculosis LungCancer</parents>
+			<probabilities>0.9833333333333333 0.01666666666666667 0.25 0.75 0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="XRay" diagtype="observation" ranked="true">
+			<state id="Normal" />
+			<state id="Abnormal" />
+			<parents>TbOrCa</parents>
+			<probabilities>0.95 0.05 0.25 0.75</probabilities>
+		</cpt>
+		<cpt id="Bronchitis" diagtype="target">
+			<state id="Absent" />
+			<state id="Present" fault="true" />
+			<parents>Smoking</parents>
+			<probabilities>0.6388888888888888 0.3611111111111111 0.3214285714285714 0.6785714285714285</probabilities>
+		</cpt>
+		<cpt id="Dyspnea" diagtype="observation" ranked="true">
+			<state id="Absent" />
+			<state id="Present" />
+			<parents>TbOrCa Bronchitis</parents>
+			<probabilities>0.96875 0.03125 0.3 0.7 0.5 0.5 0.25 0.75</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 4.0.2423.0 ACADEMIC" name="David Spiegelhalter&apos;s Asia network">
+			<comment>This is an example graphical model useful in demonstrating basics concepts of Bayesian networks in diagnosis.  This version of the model makes use of GeNIe diagnostic extensions.\nReference:\nThe Asia network first appeared in: Lauritzen, Steffen L. &amp; Spiegelhalter, David J. (1988). Local computations with probabilities on graphical structures and their application to expert systems, Journal of the Royal Statistical Society B, 50(2):157-224.</comment>
+			<node id="VisitToAsia">
+				<name>是否去过亚洲</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="333399" name="Arial" size="12" />
+				<position>310 135 414 171</position>
+				<comment>The node models whether the individual in question visited Asia recently. This is considered to be a risk factor in tuberculosis.</comment>
+				<barchart active="true" width="192" height="67" />
+			</node>
+			<node id="Tuberculosis">
+				<name>肺结核</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="333399" name="Arial" size="12" />
+				<position>216 308 317 342</position>
+				<comment>Presence or absence of tuberculosis.</comment>
+				<barchart active="true" width="188" height="66" />
+			</node>
+			<node id="Smoking">
+				<name>吸烟</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="333399" name="Arial" size="12" />
+				<position>694 143 774 179</position>
+				<comment>Does the individual smoke or not? This is a serious risk factor in both lung cancer and in bronchitis.</comment>
+				<barchart active="true" width="229" height="66" />
+			</node>
+			<node id="LungCancer">
+				<name>肺癌</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="333399" name="Arial" size="12" />
+				<position>631 267 713 314</position>
+				<comment>Does the individual suffer from lung cancer?</comment>
+				<barchart active="true" width="194" height="66" />
+			</node>
+			<node id="TbOrCa">
+				<name>肺结核或肺癌</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="333399" name="Arial" size="12" />
+				<position>484 394 619 450</position>
+				<comment>Does the individual suffer from either tuberculosis or lung cancer? This node models in practice existence of changes in the lungs, such as presence of a condensed mass.</comment>
+				<barchart active="true" width="242" height="66" />
+			</node>
+			<node id="XRay">
+				<name>X 射线结果</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="333399" name="Arial" size="12" />
+				<position>312 579 410 615</position>
+				<comment>This node models the X-ray result. Both tuberculosis and lung cancer can be discovered on the X-ray because of presence of condensed mass in the lungs.</comment>
+				<barchart active="true" width="230" height="66" />
+			</node>
+			<node id="Bronchitis">
+				<name>支气管炎</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="333399" name="Arial" size="12" />
+				<position>926 375 1012 411</position>
+				<comment>Does the individual suffer from bronchitis?</comment>
+				<barchart active="true" width="212" height="66" />
+			</node>
+			<node id="Dyspnea">
+				<name>呼吸困难</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="333399" name="Arial" size="12" />
+				<position>954 518 1030 554</position>
+				<comment>Does the individual suffer from dyspnea (shortness of breath)? Each of the diseases modeled can result in shortness of breath.</comment>
+				<barchart active="true" width="187" height="66" />
+			</node>
+		</genie>
+	</extensions>
+</smile>
