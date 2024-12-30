@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+    <class>Form</class>
+    <widget class="QWidget" name="Form">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>929</width>
+                <height>672</height>
+            </rect>
+        </property>
+        <property name="windowTitle">
+            <string>Form</string>
+        </property>
+        <property name="styleSheet">
+            <string notr="true">background-color: qlineargradient(x0:0, y1:0,x0:1, y2:1, stop:0 rgb(20, 32, 44), stop:1
+                rgb(37, 85, 117));
+                border-radius:20px
+            </string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_4">
+            <item row="0" column="0">
+                <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="1,8">
+                    <item>
+                        <layout class="QVBoxLayout" name="verticalLayout" stretch="2,1,1,1,2">
+                            <property name="spacing">
+                                <number>0</number>
+                            </property>
+                            <item>
+                                <spacer name="verticalSpacer">
+                                    <property name="orientation">
+                                        <enum>Qt::Vertical</enum>
+                                    </property>
+                                    <property name="sizeHint" stdset="0">
+                                        <size>
+                                            <width>20</width>
+                                            <height>40</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </item>
+                            <item>
+                                <widget class="QPushButton" name="page1">
+                                    <property name="styleSheet">
+                                        <string notr="true">QPushButton{
+                                            selection-color: rgb(255, 0, 0);
+                                            border-radius:6px;
+                                            color: rgb(255, 0,0);
+                                            border-style:none;
+                                            background-color: rgb(255,255,255);
+                                            font: 16pt &quot;楷体&quot;;
+                                            padding:6px;
+                                            }
+                                        </string>
+                                    </property>
+                                    <property name="text">
+                                        <string>构建网络</string>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QPushButton" name="page2">
+                                    <property name="styleSheet">
+                                        <string notr="true">QPushButton{
+                                            selection-color: rgb(255, 0, 0);
+                                            border-radius:6px;
+                                            color: rgb(255, 255, 255);
+                                            border-style:none;
+                                            background-color: transparent;
+                                            font: 16pt &quot;楷体&quot;;
+                                            padding:6px;
+                                            }
+                                        </string>
+                                    </property>
+                                    <property name="text">
+                                        <string>模型推理</string>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QPushButton" name="savebutton">
+                                    <property name="styleSheet">
+                                        <string notr="true">QPushButton{
+                                            selection-color: rgb(255, 0, 0);
+                                            border-radius:6px;
+                                            color: rgb(255, 255, 255);
+                                            border-style:none;
+                                            background-color: transparent;
+                                            font: 16pt &quot;楷体&quot;;
+                                            padding:6px;
+                                            }
+                                            QPushButton:hover{
+                                            color: rgb(255, 0, 0);
+                                            background-color: rgb(255,255,255);
+                                            }
+                                        </string>
+                                    </property>
+                                    <property name="text">
+                                        <string>导出模型</string>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <spacer name="verticalSpacer_2">
+                                    <property name="orientation">
+                                        <enum>Qt::Vertical</enum>
+                                    </property>
+                                    <property name="sizeHint" stdset="0">
+                                        <size>
+                                            <width>20</width>
+                                            <height>40</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </item>
+                        </layout>
+                    </item>
+                    <item>
+                        <widget class="QStackedWidget" name="stackedWidget">
+                            <property name="styleSheet">
+                                <string notr="true">background-color:
+                                    qlineargradient(x0:0,
+                                    y1:0,
+                                    x0:1,
+                                    y2:1,
+                                    stop:0 rgb(20, 32, 44),
+                                    stop:1 rgb(37, 85, 117));
+                                    border-radius:20px
+                                </string>
+                            </property>
+                            <property name="currentIndex">
+                                <number>0</number>
+                            </property>
+                            <widget class="QWidget" name="modelStructure">
+                                <layout class="QGridLayout" name="gridLayout">
+                                    <item row="0" column="0">
+                                        <layout class="QGridLayout" name="gridLayout_page1">
+                                            <item row="0" column="0">
+                                                <layout class="QGridLayout" name="gridLayout_5">
+                                                    <item row="1" column="0">
+                                                        <layout class="QGridLayout" name="gridLayout_7">
+                                                            <item row="0" column="0">
+                                                                <layout class="QGridLayout" name="gridLayout_3">
+                                                                    <item row="0" column="1">
+                                                                        <layout class="QGridLayout" name="gridLayout_2"
+                                                                                columnstretch="1,1,0,7,1">
+                                                                            <item row="0" column="3">
+                                                                                <spacer name="horizontalSpacer_2">
+                                                                                    <property name="orientation">
+                                                                                        <enum>Qt::Horizontal</enum>
+                                                                                    </property>
+                                                                                    <property name="sizeHint"
+                                                                                              stdset="0">
+                                                                                        <size>
+                                                                                            <width>40</width>
+                                                                                            <height>20</height>
+                                                                                        </size>
+                                                                                    </property>
+                                                                                </spacer>
+                                                                            </item>
+                                                                            <item row="0" column="0">
+                                                                                <widget class="QPushButton"
+                                                                                        name="openFile">
+                                                                                    <property name="styleSheet">
+                                                                                        <string notr="true">QPushButton{
+                                                                                            padding:8px;
+                                                                                            color:rgb(0,0,0);
+                                                                                            background-color:rgb(226,
+                                                                                            230, 255);
+                                                                                            font: 12pt &quot;楷体&quot;;
+                                                                                            border-radius:16px;
+                                                                                            }
+                                                                                            QPushButton:hover{
+                                                                                            color: rgb(0, 0, 0);
+                                                                                            background-color: rgb(43,
+                                                                                            162, 239);
+                                                                                            }
+                                                                                        </string>
+                                                                                    </property>
+                                                                                    <property name="text">
+                                                                                        <string>导入</string>
+                                                                                    </property>
+                                                                                </widget>
+                                                                            </item>
+                                                                            <item row="0" column="1">
+                                                                                <widget class="QPushButton"
+                                                                                        name="showBN">
+                                                                                    <property name="styleSheet">
+                                                                                        <string notr="true">QPushButton{
+                                                                                            padding:8px;
+                                                                                            color:rgb(0,0,0);
+                                                                                            background-color:rgb(226,
+                                                                                            230, 255);
+                                                                                            font: 12pt &quot;楷体&quot;;
+                                                                                            border-radius:16px;
+                                                                                            }
+                                                                                            QPushButton:hover{
+                                                                                            color: rgb(0, 0, 0);
+                                                                                            background-color: rgb(43,
+                                                                                            162, 239);
+                                                                                            }
+                                                                                        </string>
+                                                                                    </property>
+                                                                                    <property name="text">
+                                                                                        <string>展示</string>
+                                                                                    </property>
+                                                                                </widget>
+                                                                            </item>
+                                                                            <item row="0" column="4">
+                                                                                <widget class="QPushButton"
+                                                                                        name="closeBN">
+                                                                                    <property name="styleSheet">
+                                                                                        <string notr="true">QPushButton{
+                                                                                            padding:8px;
+                                                                                            color:rgb(0,0,0);
+                                                                                            background-color:rgb(226,
+                                                                                            230, 255);
+                                                                                            font: 12pt &quot;楷体&quot;;
+                                                                                            border-radius:16px;
+                                                                                            }
+                                                                                            QPushButton:hover{
+                                                                                            color: rgb(0, 0, 0);
+                                                                                            background-color: rgb(43,
+                                                                                            162, 239);
+                                                                                            }
+                                                                                        </string>
+                                                                                    </property>
+                                                                                    <property name="text">
+                                                                                        <string>清除</string>
+                                                                                    </property>
+                                                                                </widget>
+                                                                            </item>
+                                                                        </layout>
+                                                                    </item>
+                                                                </layout>
+                                                            </item>
+                                                            <item row="1" column="0">
+                                                                <widget class="QTextBrowser" name="EdgesBrowser">
+                                                                    <property name="styleSheet">
+                                                                        <string notr="true">color: rgb(0, 0, 0);
+                                                                            font: 12pt &quot;楷体&quot;;
+                                                                            background-color:qlineargradient(spread:reflect,
+                                                                            x1:0.0166818, y1:0, x2:1, y2:1, stop:0
+                                                                            rgba(255, 255, 255, 255), stop:0.931818
+                                                                            rgba(60, 88, 112, 255));
+                                                                            border:0px solid red;
+                                                                            border-radius:12px
+
+                                                                        </string>
+                                                                    </property>
+                                                                </widget>
+                                                            </item>
+                                                        </layout>
+                                                    </item>
+                                                    <item row="0" column="0">
+                                                        <layout class="QGridLayout" name="gridLayout_6">
+                                                            <item row="0" column="1">
+                                                                <widget class="QLabel" name="BN_structure">
+                                                                    <property name="styleSheet">
+                                                                        <string notr="true">font: 20pt &quot;楷体&quot;;
+                                                                            border:none;
+                                                                            background-color: rgba(255, 255, 255, 0);
+                                                                            color: rgb(255, 255, 255);
+                                                                        </string>
+                                                                    </property>
+                                                                    <property name="text">
+                                                                        <string>贝叶斯网络结构</string>
+                                                                    </property>
+                                                                </widget>
+                                                            </item>
+                                                            <item row="0" column="0">
+                                                                <spacer name="horizontalSpacer_4">
+                                                                    <property name="orientation">
+                                                                        <enum>Qt::Horizontal</enum>
+                                                                    </property>
+                                                                    <property name="sizeHint" stdset="0">
+                                                                        <size>
+                                                                            <width>40</width>
+                                                                            <height>20</height>
+                                                                        </size>
+                                                                    </property>
+                                                                </spacer>
+                                                            </item>
+                                                            <item row="0" column="2">
+                                                                <spacer name="horizontalSpacer_5">
+                                                                    <property name="orientation">
+                                                                        <enum>Qt::Horizontal</enum>
+                                                                    </property>
+                                                                    <property name="sizeHint" stdset="0">
+                                                                        <size>
+                                                                            <width>40</width>
+                                                                            <height>20</height>
+                                                                        </size>
+                                                                    </property>
+                                                                </spacer>
+                                                            </item>
+                                                        </layout>
+                                                    </item>
+                                                </layout>
+                                            </item>
+                                            <item row="1" column="0">
+                                                <layout class="QGridLayout" name="gridLayout_8">
+                                                    <item row="0" column="0">
+                                                        <layout class="QGridLayout" name="gridLayout_9">
+                                                            <item row="0" column="2">
+                                                                <spacer name="horizontalSpacer_7">
+                                                                    <property name="orientation">
+                                                                        <enum>Qt::Horizontal</enum>
+                                                                    </property>
+                                                                    <property name="sizeHint" stdset="0">
+                                                                        <size>
+                                                                            <width>298</width>
+                                                                            <height>17</height>
+                                                                        </size>
+                                                                    </property>
+                                                                </spacer>
+                                                            </item>
+                                                            <item row="0" column="0">
+                                                                <spacer name="horizontalSpacer_6">
+                                                                    <property name="orientation">
+                                                                        <enum>Qt::Horizontal</enum>
+                                                                    </property>
+                                                                    <property name="sizeHint" stdset="0">
+                                                                        <size>
+                                                                            <width>298</width>
+                                                                            <height>17</height>
+                                                                        </size>
+                                                                    </property>
+                                                                </spacer>
+                                                            </item>
+                                                            <item row="0" column="1">
+                                                                <widget class="QLabel" name="CPTlabel">
+                                                                    <property name="styleSheet">
+                                                                        <string notr="true">font: 20pt &quot;楷体&quot;;
+                                                                            border:none;
+                                                                            background-color: rgba(255, 255, 255, 0);
+                                                                            color: rgb(255, 255, 255);
+                                                                        </string>
+                                                                    </property>
+                                                                    <property name="text">
+                                                                        <string>概率表</string>
+                                                                    </property>
+                                                                </widget>
+                                                            </item>
+                                                        </layout>
+                                                    </item>
+                                                    <item row="1" column="0">
+                                                        <layout class="QGridLayout" name="gridLayout_10">
+                                                            <item row="0" column="0">
+                                                                <layout class="QHBoxLayout" name="horizontalLayout_2"
+                                                                        stretch="1,3">
+                                                                    <item>
+                                                                        <widget class="QComboBox" name="cptvariable">
+                                                                            <property name="styleSheet">
+                                                                                <string notr="true">font: 12pt &quot;楷体&quot;;
+                                                                                    background-color: rgb(255, 255,
+                                                                                    255);
+                                                                                    color: rgb(0, 0, 0);
+                                                                                    selection-color: rgb(255, 0, 0);
+                                                                                </string>
+                                                                            </property>
+                                                                        </widget>
+                                                                    </item>
+                                                                    <item>
+                                                                        <spacer name="horizontalSpacer_18">
+                                                                            <property name="orientation">
+                                                                                <enum>Qt::Horizontal</enum>
+                                                                            </property>
+                                                                            <property name="sizeHint" stdset="0">
+                                                                                <size>
+                                                                                    <width>40</width>
+                                                                                    <height>20</height>
+                                                                                </size>
+                                                                            </property>
+                                                                        </spacer>
+                                                                    </item>
+                                                                </layout>
+                                                            </item>
+                                                            <item row="1" column="0">
+                                                                <widget class="QTextBrowser" name="showCPT">
+                                                                    <property name="styleSheet">
+                                                                        <string notr="true">color: rgb(0, 0, 0);
+                                                                            font: 12pt &quot;楷体&quot;;
+                                                                            background-color:qlineargradient(spread:reflect,
+                                                                            x1:0.0166818, y1:0, x2:1, y2:1, stop:0
+                                                                            rgba(255, 255, 255, 255), stop:0.931818
+                                                                            rgba(60, 88, 112, 255));
+                                                                            border:0px solid red;
+                                                                            border-radius:12px
+                                                                        </string>
+                                                                    </property>
+                                                                </widget>
+                                                            </item>
+                                                        </layout>
+                                                    </item>
+                                                </layout>
+                                            </item>
+                                        </layout>
+                                    </item>
+                                </layout>
+                            </widget>
+                            <widget class="QWidget" name="Query">
+                                <layout class="QGridLayout" name="gridLayout_27">
+                                    <item row="0" column="0">
+                                        <layout class="QGridLayout" name="gridLayout_25" rowstretch="1,4">
+                                            <item row="0" column="0">
+                                                <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0,2">
+                                                    <item>
+                                                        <layout class="QHBoxLayout" name="horizontalLayout_3"
+                                                                stretch="1,1,9,2,4">
+                                                            <item>
+                                                                <widget class="QPushButton" name="evidenceButton">
+                                                                    <property name="styleSheet">
+                                                                        <string notr="true">QPushButton{
+                                                                            selection-color: rgb(0, 0, 255);
+                                                                            padding:8px;
+                                                                            color:rgb(0,0,0);
+                                                                            background-color:rgb(226, 230, 255);
+                                                                            font: 12pt &quot;楷体&quot;;
+                                                                            border-radius:16px;
+                                                                            }
+
+                                                                        </string>
+                                                                    </property>
+                                                                    <property name="text">
+                                                                        <string>设置证据</string>
+                                                                    </property>
+                                                                </widget>
+                                                            </item>
+                                                            <item>
+                                                                <widget class="QPushButton" name="clearButton">
+                                                                    <property name="styleSheet">
+                                                                        <string notr="true">QPushButton{
+                                                                            padding:8px;
+                                                                            color:rgb(0,0,0);
+                                                                            background-color:rgb(226, 230, 255);
+                                                                            font: 12pt &quot;楷体&quot;;
+                                                                            border-radius:16px;
+                                                                            }
+                                                                            QPushButton:hover{
+                                                                            color: rgb(0, 0, 0);
+                                                                            background-color: rgb(43, 162, 239);
+                                                                            }
+                                                                        </string>
+                                                                    </property>
+                                                                    <property name="text">
+                                                                        <string>清除证据</string>
+                                                                    </property>
+                                                                </widget>
+                                                            </item>
+                                                            <item>
+                                                                <spacer name="horizontalSpacer_15">
+                                                                    <property name="orientation">
+                                                                        <enum>Qt::Horizontal</enum>
+                                                                    </property>
+                                                                    <property name="sizeHint" stdset="0">
+                                                                        <size>
+                                                                            <width>40</width>
+                                                                            <height>20</height>
+                                                                        </size>
+                                                                    </property>
+                                                                </spacer>
+                                                            </item>
+                                                            <item>
+                                                                <widget class="QLineEdit" name="sampleNum">
+                                                                    <property name="styleSheet">
+                                                                        <string notr="true">background-color: rgb(255,
+                                                                            255, 255);
+                                                                            color: rgb(0, 0, 0);
+                                                                            font: 12pt &quot;Times New Roman&quot;;
+                                                                        </string>
+                                                                    </property>
+                                                                </widget>
+                                                            </item>
+                                                            <item>
+                                                                <widget class="QComboBox" name="queryMode">
+                                                                    <property name="styleSheet">
+                                                                        <string notr="true">background-color:
+                                                                            rgb(255,255, 255);
+                                                                            font: 12pt &quot;Microsoft YaHei UI&quot;;
+                                                                            selection-color: rgb(255, 0, 0);
+                                                                        </string>
+                                                                    </property>
+                                                                    <item>
+                                                                        <property name="text">
+                                                                            <string>精确推理</string>
+                                                                        </property>
+                                                                    </item>
+                                                                    <item>
+                                                                        <property name="text">
+                                                                            <string>近似采样推理</string>
+                                                                        </property>
+                                                                    </item>
+                                                                </widget>
+                                                            </item>
+                                                        </layout>
+                                                    </item>
+                                                    <item>
+                                                        <widget class="QTextBrowser" name="showEvidence">
+                                                            <property name="styleSheet">
+                                                                <string notr="true">QFrame{
+                                                                    background-color:qlineargradient(spread:reflect,
+                                                                    x1:0.0166818, y1:0, x2:1, y2:1, stop:0 rgba(255,
+                                                                    255, 255, 255), stop:0.931818 rgba(60, 88, 112,
+                                                                    255));
+                                                                    border:0px solid red;
+                                                                    color: rgb(0, 0,0);
+                                                                    font: 12pt &quot;楷体&quot;;
+                                                                    border-radius:12px
+                                                                    }
+                                                                </string>
+                                                            </property>
+                                                        </widget>
+                                                    </item>
+                                                </layout>
+                                            </item>
+                                            <item row="1" column="0">
+                                                <layout class="QVBoxLayout" name="verticalLayout_5" stretch="1,7">
+                                                    <item>
+                                                        <layout class="QGridLayout" name="gridLayout_12" rowstretch="0">
+                                                            <item row="0" column="0">
+                                                                <layout class="QGridLayout" name="gridLayout_24"
+                                                                        columnstretch="0">
+                                                                    <item row="0" column="0">
+                                                                        <layout class="QHBoxLayout"
+                                                                                name="horizontalLayout" stretch="2,1,8">
+                                                                            <property name="spacing">
+                                                                                <number>0</number>
+                                                                            </property>
+                                                                            <item>
+                                                                                <widget class="QComboBox"
+                                                                                        name="queryCombobox">
+                                                                                    <property name="styleSheet">
+                                                                                        <string notr="true">font: 12pt
+                                                                                            &quot;楷体&quot;;
+                                                                                            color: rgb(0, 0, 0);
+                                                                                            selection-color: rgb(255, 0,
+                                                                                            0);
+                                                                                            background-color: rgb(255,
+                                                                                            255, 255);
+                                                                                        </string>
+                                                                                    </property>
+                                                                                </widget>
+                                                                            </item>
+                                                                            <item>
+                                                                                <widget class="QPushButton"
+                                                                                        name="querybutton">
+                                                                                    <property name="styleSheet">
+                                                                                        <string notr="true">QPushButton{
+                                                                                            padding:8px;
+                                                                                            color:rgb(0,0,0);
+                                                                                            background-color:rgb(226,
+                                                                                            230, 255);
+                                                                                            font: 12pt &quot;楷体&quot;;
+                                                                                            border-radius:16px;
+                                                                                            }
+                                                                                            QPushButton:hover{
+                                                                                            color: rgb(0, 0, 0);
+                                                                                            background-color: rgb(43,
+                                                                                            162, 239);
+                                                                                            }
+                                                                                        </string>
+                                                                                    </property>
+                                                                                    <property name="text">
+                                                                                        <string>推理</string>
+                                                                                    </property>
+                                                                                </widget>
+                                                                            </item>
+                                                                            <item>
+                                                                                <spacer name="horizontalSpacer">
+                                                                                    <property name="orientation">
+                                                                                        <enum>Qt::Horizontal</enum>
+                                                                                    </property>
+                                                                                    <property name="sizeHint"
+                                                                                              stdset="0">
+                                                                                        <size>
+                                                                                            <width>40</width>
+                                                                                            <height>20</height>
+                                                                                        </size>
+                                                                                    </property>
+                                                                                </spacer>
+                                                                            </item>
+                                                                        </layout>
+                                                                    </item>
+                                                                </layout>
+                                                            </item>
+                                                        </layout>
+                                                    </item>
+                                                    <item>
+                                                        <layout class="QGridLayout" name="picLayout">
+                                                            <item row="0" column="0">
+                                                                <widget class="QFrame" name="frame">
+                                                                    <property name="styleSheet">
+                                                                        <string notr="true">QFrame{
+                                                                            background-color:qlineargradient(spread:reflect,
+                                                                            x1:0.0166818, y1:0, x2:1, y2:1, stop:0
+                                                                            rgba(255, 255, 255, 255), stop:0.931818
+                                                                            rgba(60, 88, 112, 255));
+                                                                            border:0px solid red;
+                                                                            color: rgb(255, 254, 255);
+                                                                            border-radius:12px
+                                                                            }
+                                                                        </string>
+                                                                    </property>
+                                                                    <property name="frameShape">
+                                                                        <enum>QFrame::StyledPanel</enum>
+                                                                    </property>
+                                                                    <property name="frameShadow">
+                                                                        <enum>QFrame::Raised</enum>
+                                                                    </property>
+                                                                </widget>
+                                                            </item>
+                                                        </layout>
+                                                    </item>
+                                                </layout>
+                                            </item>
+                                        </layout>
+                                    </item>
+                                </layout>
+                            </widget>
+                        </widget>
+                    </item>
+                </layout>
+            </item>
+        </layout>
+    </widget>
+    <resources/>
+    <connections/>
+</ui>
